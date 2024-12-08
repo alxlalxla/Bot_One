@@ -92,7 +92,7 @@ python3 nome_script.py
 se non hai un token guarda la guida alla generazione di un token con Token Generator su https://twitchio.dev/en/stable/quickstart.html 
 
 ## configurazione del bot
-al primo avvio del bot partirá la configurazione automatica che creerá il file config.json, se vuoi puoi modificare manualmente le impostazioni puoi editare il file config.json contenuto nella directory del bot
+al primo avvio del bot partirá la configurazione automatica che creerá il file config.json, se vuoi puoi modificare manualmente le impostazioni editando il file config.json contenuto nella directory del bot
 
     "token": "...",              <- metti qui il tuo token Twitch
     "prefix": ["!"],             <- metti qui il prefisso dei comandi oppure lascia "!"
