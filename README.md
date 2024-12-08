@@ -87,7 +87,7 @@ ls -la
 ```
 puoi avviare lo script python con:
 ```bash
-python3 nome_script.py
+python3 bot_one_1.0.5.2.py
 ```
 se non hai un token guarda la guida alla generazione di un token con Token Generator su https://twitchio.dev/en/stable/quickstart.html 
 
