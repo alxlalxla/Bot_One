@@ -1,0 +1,14 @@
+# Ignora tutti i file .json
+*.json
+
+# Ignora tutti i file .sh
+*.sh
+
+# Ignora la directory usr
+usr/
+
+# Ignora la directory media
+media/
+
+# Ignora la directory tmp
+tmp/
