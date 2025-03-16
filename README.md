@@ -20,7 +20,7 @@ Creazione macchina virtuale con VirtualBox
 
 5) avvia la VM appena creata
 
-6) seleziona "install" e premi invio, puoi muoverti nei menú con le "frecce" e "tab", selezionare con "spazio" e confermare con "invio", segui le istruzioni a schermo (se hai dubbi lascia le scelte di default) per le opzioni di localizzazione, hostname, password di root, crea un nuovo utente chiamato "bot", partizionamento disco e proxy.
+6) seleziona "install" e premi invio, puoi muoverti nei menú con le "frecce" e "tab", selezionare con "spazio" e confermare con "invio", segui le istruzioni a schermo (se hai dubbi lascia le scelte di default) per le opzioni di localizzazione, hostname, password di root (scegli la password di root, cioé dell'amministratore di sistema della VM), creazione nuovo utente (crea un nuovo utente chiamato "bot" e assegnagli una password, questo sará l'utente che avvierá il bot), partizionamento disco e proxy.
 
 7) nella selezione software togli tutti gli asterischi (usando la barra spaziatrice) e lascia solo "Standard System Utilities", aggiungi "SSH server" se vorrai collegarti in futuro per gestire la VM tramite SSH, seleziona continua per confermare, installa GRUB su /dev/sda e continua per riavviare
 
@@ -29,8 +29,6 @@ Creazione macchina virtuale con VirtualBox
     "Dispositivi" -> "Lettori ottici"  -> "Rimuovi disco dal lettore virtuale"
   
     "Dispositivi" -> "Inserisci l'immagine del CD delle Guest Additions..."
-
-
 
 9) loggati come root alla VM e dai i seguenti comandi:
 ```bash
@@ -54,7 +52,7 @@ apt update && apt -y upgrade && apt -y autoremove && apt clean
 ```
 installa le dipendenze del bot:
 ```bash
-apt install python3-venv python3-pip mpv yt-dlp espeak-ng espeak-ng-data
+apt install python3-venv python3-pip git mpv yt-dlp espeak-ng espeak-ng-data
 ```
 aggiungi l'utente "bot" al gruppo "vboxsf" con il comando:
 ```bash
@@ -70,35 +68,36 @@ python3 -m venv bot
 source bot/bin/activate
 pip install -U twitchio
 ```
-copia la cartella bot_one_1.0.x dentro la cartella condivisa "debian_bot" sul tuo PC, ora dovresti poter leggerne il contenuto nella diretory /debian_bot/ della VM
+
+per avviare automaticamente l'ambiente python al prossimo login:
+```bash
+echo -e "source /home/bot/bot/bin/activate\ncd /debian_bot/Bot_One/" >> ~/.bashrc
+```
+
+scarica Bot_One da Github
+```bash
+cd /debian_bot/
+git clone https://github.com/alxlalxla/Bot_One.git
+```
+se tutto é andato a buonfine dovresti poter leggere il contenuto nella diretory /debian_bot/ della VM dentro la cartella condivisa "debian_bot" sul tuo PC
 
 installazione VM terminata
 
-
-## avvio del bot
-per avviare lo script del bot_one loggati come utente "bot" alla VM e attiva l'ambiente python con il seguente comando:
-```bash
-source /home/bot/bot/bin/activate
-```
-e spostati nella diretory debian_bot:
-```bash
-cd /debian_bot/
-ls -la
-```
-puoi avviare lo script python con:
-```bash
-python3 bot_one_1.0.5.2.py
-```
+## preparazione all'avvio del bot
+al primo avvio dello script ti servirá il token dell'utente Twitch che fará da bot
 se non hai un token guarda la guida alla generazione di un token con Token Generator su https://twitchio.dev/en/stable/quickstart.html 
 
+## avvio del bot
+loggati come utente "bot" alla VM e avvia lo script python con:
+```bash
+python3 bot_one_1.0.5.3.py
+```
 ## configurazione del bot
 al primo avvio del bot partirá la configurazione automatica che creerá il file config.json, se vuoi puoi modificare manualmente le impostazioni editando il file config.json contenuto nella directory del bot
 
     "token": "...",              <- metti qui il tuo token Twitch
     "prefix": ["!"],             <- metti qui il prefisso dei comandi oppure lascia "!"
-    "initial_channels": ["..."]  <- metti qui il nome del canale Twitch a cui collegare il bot
-
+    "initial_channels": ["..."]  <- metti qui il nome del canale Twitch a cui collegare il bot, puoi collegare piú di un canale alla volta
 
 ## come usare il bot
 dopo aver collegato il bot al canale scrivi "!comandi" nella chat di Twitch
-
