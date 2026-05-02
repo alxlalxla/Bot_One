@@ -1,5 +1,20 @@
+> [!CAUTION]
+> ### Project Deprecated / Progetto Deprecato
+>
+> **[EN]**
+> This repository is officially deprecated and no longer supported. 
+> The project was developed using **TwitchIO v2.x**, which is now obsolete. Due to significant changes in the Twitch API infrastructure and the release of **TwitchIO v3.x**, this codebase is incompatible with current authentication standards and event management (EventSub). The bot is no longer functional.
+>
+> ---
+>
+> **[IT]**
+> Questo repository è ufficialmente deprecato e non è più supportato.
+> Il progetto è stato sviluppato utilizzando **TwitchIO v2.x**, una versione della libreria ora obsoleta. A causa dei cambiamenti nell'infrastruttura delle API di Twitch e del rilascio di **TwitchIO v3.x**, l'attuale codebase è incompatibile con i moderni standard di autenticazione e gestione degli eventi (EventSub). Il bot non è più funzionante.
+
+
+
 # Bot_One
-Bot_One is a Twitch bot built using the TwitchIO API
+Bot_One is a Twitch bot built using the TwitchIO library for the Twitch API
 
 
 il bot é pensato per funzionare con GNU/Linux, puoi usarlo nativamente sul tuo PC oppure su una VM (macchina virtuale)
